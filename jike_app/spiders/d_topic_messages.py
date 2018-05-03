@@ -29,8 +29,8 @@ class DTopicMessagesSpider(scrapy.Spider):
     def parse(self, response):
         dic_result = json.loads(str(response.body, encoding='utf-8'))
         print(response.meta['category'] + '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        print(type(dic_result['loadMoreKey']))
         num = dic_result['loadMoreKey']
+        print(num)
         if dic_result['loadMoreKey'] is not None and dic_result['loadMoreKey'] < 30:
             for obj_dict in dic_result['data']:
                 print(obj_dict['content'])
