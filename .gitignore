@@ -1,2 +1,4 @@
 .idea
-jike_app\__pycache__
+jike_app/__pycache__/*
+jike_app/spiders/__pycache__/*
+tools/__pycache__/*
