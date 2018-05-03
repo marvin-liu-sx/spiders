@@ -31,7 +31,7 @@ class DTopicMessagesSpider(scrapy.Spider):
         print(response.meta['category'] + '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
         print(type(dic_result['loadMoreKey']))
         num = dic_result['loadMoreKey']
-        if dic_result['loadMoreKey'] is not None and dic_result['loadMoreKey'] < 40:
+        if dic_result['loadMoreKey'] is not None and dic_result['loadMoreKey'] < 30:
             for obj_dict in dic_result['data']:
                 print(obj_dict['content'])
                 post_data = {'limit': 20, 'topic': obj_dict['id']}
