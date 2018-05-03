@@ -2,7 +2,7 @@
 import scrapy
 from scrapy.http import Request
 import json
-from tools.fake_request_headers import randomHeaders
+from tools.fake_request_headers import RandomHeaders
 from ..items import DMessagesItem
 
 

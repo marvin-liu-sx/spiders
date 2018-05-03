@@ -3,7 +3,7 @@ import scrapy
 from scrapy.http import Request
 import json
 from ..items import DRecommenDationItem
-from tools.fake_request_headers import randomHeaders
+from tools.fake_request_headers import RandomHeaders
 
 
 class getLoadMoreKey(object):
