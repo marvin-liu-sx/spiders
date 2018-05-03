@@ -68,7 +68,7 @@ ITEM_PIPELINES = {
     # 'jike_app.pipelines.JikeAppPipeline': 300,
     # 'jike_app.pipelines.JsonExporterPipleline': 300,
     # 'jike_app.pipelines.JsonWithEncodingPipline': 300,
-    #'jike_app.pipelines.JikeMessagesPipeline': 300
+    'jike_app.pipelines.JikeMessagesPipeline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

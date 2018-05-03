@@ -43,15 +43,15 @@ class JikeAppPipeline(object):
 class JikeMessagesPipeline(object):
     def process_item(self, item, spider):
         connect = pymysql.Connect(
-            host='localhost',
-            port=3306,
-            user='root',
-            password='qwer@6a',
-            db='jike_app',
-            charset='utf8'
+            host='221.228.79.244',
+            port=8066,
+            user='zhangcong2@SpiderTest',
+            password='4k7wtlqqR',
+            db='spider_test',
+            charset='utf8mb4'
         )
         cursor = connect.cursor()
-        sql = "INSERT INTO jike_messages_wed (topic_category, topic_content, topic_type, topic_focus_count, " \
+        sql = "INSERT INTO jike_messages_new (topic_category, topic_content, topic_type, topic_focus_count, " \
               "message_id, message_type, message_content, message_status, message_like_count, message_comment_count, " \
               "message_repost_count, message_is_video, message_is_img)" \
               " VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
