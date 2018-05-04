@@ -136,3 +136,37 @@ class MysqlTwistedPipline(object):
     def do_insert(self, cursor, item):
         insert_sql, params = item.get_insert_sql()
         cursor.execute(insert_sql, params)
+
+
+class DouYinPipline(object):
+    """
+    抖音item
+    """
+
+    def process_item(self, item, spider):
+        connect = pymysql.Connect(
+            host='221.228.79.244',
+            port=8066,
+            user='zhangcong2@SpiderTest',
+            password='4k7wtlqqR',
+            db='spider_test',
+            charset='utf8mb4'
+        )
+        cursor = connect.cursor()
+        sql = "INSERT INTO douyin (video_source, video_id, video_img, video_url, video_title, video_width, video_height," \
+              " video_duration, play_count, comment_count, share_count, digg_count)" \
+              " VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        data = (
+            item['video_source'], item['video_id'], item['video_img'], item['video_url'], item['video_title'],
+            item['video_width'], item['video_height'], item['video_duration'], item['play_count'], item['comment_count'],
+            item['share_count'], item['digg_count'])
+        try:
+            cursor.execute(sql % data)
+        except Exception as e:
+            connect.rollback()
+            raise e
+        finally:
+            connect.commit()
+            cursor.close()
+            connect.close()
+        return item

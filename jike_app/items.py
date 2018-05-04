@@ -66,8 +66,23 @@ class DMessagesItem(scrapy.Item):
     # 转发数
     repost_count = scrapy.Field()
     # 时间
-    #create_time = scrapy.Field()
+    # create_time = scrapy.Field()
     # 是否为视频
     is_video = scrapy.Field()
     # 是否为图文
     is_img = scrapy.Field()
+
+
+class DouyinItem(scrapy.Item):
+    video_source = scrapy.Field()
+    video_id = scrapy.Field()
+    video_img = scrapy.Field()
+    video_url = scrapy.Field()
+    video_title = scrapy.Field()
+    video_width = scrapy.Field()
+    video_height = scrapy.Field()
+    video_duration = scrapy.Field()
+    play_count = scrapy.Field()
+    comment_count = scrapy.Field()
+    share_count = scrapy.Field()
+    digg_count = scrapy.Field()
