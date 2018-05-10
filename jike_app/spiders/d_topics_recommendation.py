@@ -91,7 +91,7 @@ class DTopicsRecommendationSpider(scrapy.Spider):
                     yield Request(url='https://app.jike.ruguoapp.com/1.0/topics/recommendation/list',
                                   headers=randomHeaders().get_header(), method='POST', meta={'category': k},
                                   body=str(post_data).replace('\'', '"'), callback=self.parse)
-
+        yield scrapy.http.FormRequest()
     def parse(self, response):
         dic_result = json.loads(str(response.body, encoding='utf-8'))
 
