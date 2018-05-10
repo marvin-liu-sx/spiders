@@ -7,7 +7,6 @@
 
 from scrapy import signals
 
-
 class JikeAppSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
@@ -101,3 +100,19 @@ class JikeAppDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+from selenium import webdriver
+from scrapy.http import HtmlResponse
+
+
+class JSPageMiddleware(object):
+    def process_request(self, request, spider):
+        if spider.name == 'miaopai':
+            browser = webdriver.Chrome(executable_path="F:/chromedriver.exe")
+            spider.browser.get(request.url)
+            import time
+            time.sleep(3)
+            print('访问:{0}'.format(request.url))
+            return HtmlResponse(url=spider.browser.current_url, body=spider.browser.page_source,
+                                encoding='utf-8', request=request)

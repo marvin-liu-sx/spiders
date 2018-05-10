@@ -170,3 +170,32 @@ class DouYinPipline(object):
             cursor.close()
             connect.close()
         return item
+########################################################################################################################
+class MiaoPaiPipline(object):
+    def process_item(self, item, spider):
+        connect = pymysql.Connect(
+            host='221.228.79.244',
+            port=8066,
+            user='zhangcong2@SpiderTest',
+            password='4k7wtlqqR',
+            db='spider_test',
+            charset='utf8mb4'
+        )
+        cursor = connect.cursor()
+        sql = "INSERT INTO tmp (channel_id, media_id, media_name, video_id, video_title, play_count, video_duration," \
+              " video_url, video_cover, source, status, meta_data, video_width, video_height)" \
+              " VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        data = (
+            item['channel_id'], item['media_id'], item['media_name'], item['video_id'], item['video_title'],
+            item['play_count'], item['video_duration'], item['video_url'], item['video_cover'], item['source'],
+            item['status'], item['meta_data'], item['video_width'], item['video_height'])
+        try:
+            cursor.execute(sql % data)
+            connect.commit()
+        except Exception as e:
+            connect.rollback()
+            raise e
+        finally:
+            cursor.close()
+            connect.close()
+        return item

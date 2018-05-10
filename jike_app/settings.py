@@ -26,7 +26,7 @@ CONCURRENT_REQUESTS = 18
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 30
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
@@ -52,9 +52,9 @@ COOKIES_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'jike_app.middlewares.JikeAppDownloaderMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+   'jike_app.middlewares.JSPageMiddleware': 1,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -69,7 +69,7 @@ ITEM_PIPELINES = {
     # 'jike_app.pipelines.JsonExporterPipleline': 300,
     # 'jike_app.pipelines.JsonWithEncodingPipline': 300,
     #'jike_app.pipelines.JikeMessagesPipeline': 300,
-    'jike_app.pipelines.DouYinPipline': 300
+    #'jike_app.pipelines.DouYinPipline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

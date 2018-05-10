@@ -5,6 +5,7 @@
 
 
 """Documentation comments"""
+import xlrd
 # post_data = {'categoryAlias':'RECOMMENDATION'}
 # post_data2 = '{"categoryAlias":"RECOMMENDATION"}'
 # print(post_data)
@@ -69,31 +70,48 @@
 # print(request_headers)
 # print(type(request_headers))
 
-class getLoadMoreKey(object):
-    """loadMoreKey: post参数"""
-
-    def __init__(self, max_limit):
-        self.max_limt = max_limit
-        self.n = 0
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.n < self.max_limt:
-            self.n += 32
-            return self.n
-        raise StopIteration()
-a = getLoadMoreKey(200)
-for i in a:
-    print(i)
-
-
-
-
-
-
-
+# class getLoadMoreKey(object):
+#     """loadMoreKey: post参数"""
+#
+#     def __init__(self, max_limit):
+#         self.max_limt = max_limit
+#         self.n = 0
+#
+#     def __iter__(self):
+#         return self
+#
+#     def __next__(self):
+#         if self.n < self.max_limt:
+#             self.n += 32
+#             return self.n
+#         raise StopIteration()
+# a = getLoadMoreKey(200)
+# for i in a:
+#     print(i)
+# data_arr = []
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
+#     table = book.sheet_by_name('name')
+#     row_count = table.nrows
+#     for row in range(1, row_count):
+#         trdata = table.row_values(row)
+#         # print(type(trdata))
+#         if 'http://www.miaopai.com/' in trdata[0]:
+#             data_arr.append(trdata[0])
+# print(data_arr)
+# print(len(data_arr))
+# import base64
+# a = '刺激战场'
+# b = base64.b64encode(a.encode('utf-8'))
+# #print((base64.b64decode(b)).decode('utf-8'))
+# print(b)
+# print(b.decode())
+# a = '刺激战场'
+# b = base64.b64encode(a.encode('utf-8'))
+# #print((base64.b64decode(b)).decode('utf-8'))
+# print(b)
+# print(b.decode())
+a = '23'
+print(int(a))
 
 
 
