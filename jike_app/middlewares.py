@@ -113,7 +113,7 @@ class JSPageMiddleware(object):
         super(JSPageMiddleware, self).__init__()
 
     def process_request(self, request, spider):
-        if spider.name == 'miaopai':
+        if spider.name == 'meipai':
             self.browser.get(request.url)
             import time
             time.sleep(5)

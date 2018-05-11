@@ -119,10 +119,28 @@ import xlrd
 # import time
 # time.sleep(10)
 # browser.quit()
-
-
-
-
+# import re
+# a = 'http://www.meipai.com/media/989143153?uid=1576223931&client_id=1089857302'
+#
+# b = re.findall(r'http://www.meipai.com/media/\d*', a)
+# c = re.findall(r'/\d*', a)
+# print(b)
+# import re
+# data_arr = []
+#
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
+#     table = book.sheet_by_name('qita')
+#     row_count = table.nrows
+#     for row in range(1, row_count):
+#         trdata = table.row_values(row)
+#         if 'http://www.meipai.com/' in trdata[0]:
+#             a = re.findall(r'http://www.meipai.com/media/\d*', trdata[0])[0]
+#             data_arr.append(a)
+# print(len(data_arr))
+import re
+a = 'http://www.meipai.com/media/949961076'
+b = re.search(r'^[1-9]\d*$', a)
+print(b)
 
 
 
