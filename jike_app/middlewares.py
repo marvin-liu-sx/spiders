@@ -107,12 +107,16 @@ from scrapy.http import HtmlResponse
 
 
 class JSPageMiddleware(object):
+
+    def __init__(self):
+        self.browser = webdriver.Chrome(executable_path="F:/chromedriver.exe")
+        super(JSPageMiddleware, self).__init__()
+
     def process_request(self, request, spider):
         if spider.name == 'miaopai':
-            browser = webdriver.Chrome(executable_path="F:/chromedriver.exe")
-            spider.browser.get(request.url)
+            self.browser.get(request.url)
             import time
-            time.sleep(3)
-            print('访问:{0}'.format(request.url))
-            return HtmlResponse(url=spider.browser.current_url, body=spider.browser.page_source,
+            time.sleep(5)
+            print('middleware启动')
+            return HtmlResponse(url=self.browser.current_url, body=self.browser.page_source,
                                 encoding='utf-8', request=request)

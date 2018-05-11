@@ -110,11 +110,15 @@ import xlrd
 # #print((base64.b64decode(b)).decode('utf-8'))
 # print(b)
 # print(b.decode())
-a = '23'
-print(int(a))
+# a = '23'
+# print(int(a))
 
-
-
+# from selenium import webdriver
+# browser = webdriver.Chrome(executable_path='F:/chromedriver.exe')
+# browser.get('http://www.renrenlab.com')
+# import time
+# time.sleep(10)
+# browser.quit()
 
 
 

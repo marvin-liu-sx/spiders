@@ -182,7 +182,7 @@ class MiaoPaiPipline(object):
             charset='utf8mb4'
         )
         cursor = connect.cursor()
-        sql = "INSERT INTO tmp (channel_id, media_id, media_name, video_id, video_title, play_count, video_duration," \
+        sql = "INSERT INTO yunying (channel_id, media_id, media_name, video_id, video_title, play_count, video_duration," \
               " video_url, video_cover, source, status, meta_data, video_width, video_height)" \
               " VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
         data = (
