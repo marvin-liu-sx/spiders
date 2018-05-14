@@ -137,14 +137,8 @@ import xlrd
 #             a = re.findall(r'http://www.meipai.com/media/\d*', trdata[0])[0]
 #             data_arr.append(a)
 # print(len(data_arr))
-import re
-a = 'http://www.meipai.com/media/949961076'
-b = re.search(r'^[1-9]\d*$', a)
-print(b)
-
-
-
-
-
-
-
+# import re
+# a = '28.5万播放'
+# b = re.findall(r'\d*', a)
+# c = b[0]+b[2]
+# print(type(c))
