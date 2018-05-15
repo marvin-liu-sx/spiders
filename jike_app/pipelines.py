@@ -182,11 +182,11 @@ class MiaoPaiPipline(object):
             charset='utf8mb4'
         )
         cursor = connect.cursor()
-        sql = "INSERT INTO yunying (channel_id, media_id, media_name, video_id, video_title, play_count, video_duration," \
+        sql = "INSERT INTO yunying (i_id, channel_id, media_id, media_name, video_id, video_title, play_count, video_duration," \
               " video_url, video_cover, source, status, meta_data, video_width, video_height)" \
-              " VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+              " VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
         data = (
-            item['channel_id'], item['media_id'], item['media_name'], item['video_id'], item['video_title'],
+            item['i_id'], item['channel_id'], item['media_id'], item['media_name'], item['video_id'], item['video_title'],
             item['play_count'], item['video_duration'], item['video_url'], item['video_cover'], item['source'],
             item['status'], item['meta_data'], item['video_width'], item['video_height'])
         try:

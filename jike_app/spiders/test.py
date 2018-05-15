@@ -138,7 +138,51 @@ import xlrd
 #             data_arr.append(a)
 # print(len(data_arr))
 # import re
-# a = '28.5万播放'
-# b = re.findall(r'\d*', a)
-# c = b[0]+b[2]
-# print(type(c))
+# a = '总播放数16191'
+# b = re.match(r'.*?(\d+)', a).group(1)
+# print(b)
+import time
+# b = []
+# for i in range(859):
+#     a = int(round(time.time()*1000))
+#     b.append(a)
+# print(b)
+# print(len(b))
+
+
+# import random
+# d = []
+# for i in range(100):
+#     a = random.sample([random.randint(1, 100000000)], 1)
+#     b = int(round(time.time()*1000))
+#     c = a[0] + b
+#     print(a)
+#     d.append(c)
+# print(d)
+import time
+# import random
+# _s = random.sample([random.randint(1, 100000000)], 1)
+# print(_s)
+# import base64
+# a = base64.b64encode('火哥美食'.encode('utf-8')).decode()
+# print(a)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

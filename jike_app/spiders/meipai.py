@@ -5,19 +5,26 @@ from scrapy.http import Request
 import base64
 import re
 from ..items import MiaoPaiItem
+import time
+import random
+
 
 #data_arr = ['http://www.meipai.com/media/990160994']
 
-data_arr = []
+data_arr = ['http://www.meipai.com/media/995115487', 'http://www.meipai.com/media/998269732', 'http://www.meipai.com/media/997473082',
+            'http://www.meipai.com/media/997875509', 'http://www.meipai.com/media/997074362', 'http://www.meipai.com/media/998408000',
+            'http://www.meipai.com/media/997775997', 'http://www.meipai.com/media/997510646', 'http://www.meipai.com/media/995734046',
+            'http://www.meipai.com/media/998153839', 'http://www.meipai.com/media/983749310', 'http://www.meipai.com/media/921923049',
+            'http://www.meipai.com/media/991249171', 'http://www.meipai.com/media/939986747', 'http://www.meipai.com/media/985397404']
 
-with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
-    table = book.sheet_by_name('zhishi')
-    row_count = table.nrows
-    for row in range(1, row_count):
-        trdata = table.row_values(row)
-        if 'https://www.meipai.com/' in trdata[0]:
-            a = re.findall(r'https://www.meipai.com/media/\d*', trdata[0])[0]
-            data_arr.append(a)
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
+#     table = book.sheet_by_name('zhishi')
+#     row_count = table.nrows
+#     for row in range(1, row_count):
+#         trdata = table.row_values(row)
+#         if 'https://www.meipai.com/' in trdata[0]:
+#             a = re.findall(r'https://www.meipai.com/media/\d*', trdata[0])[0]
+#             data_arr.append(a)
 
 
 class MeipaiSpider(scrapy.Spider):
@@ -34,10 +41,10 @@ class MeipaiSpider(scrapy.Spider):
             yield Request(url=i, method='GET', headers=self.default_header, encoding='utf-8', callback=self.parse)
 
     def parse(self, response):
-        channel_id = '知识类'
+        channel_id = '其他'
         #print('channel_id--------->'+channel_id)
 
-        media_name = str(response.xpath("//h3[@class='detail-name pa']/a/text()").extract_first()).strip()
+        media_name = str(response.xpath(".//h3[@class='detail-name pa']/a/text()").extract_first()).strip()
         #print('media_name--------->'+media_name)
 
         media_id = base64.b64encode(str(media_name).encode('utf-8')).decode()
@@ -46,10 +53,10 @@ class MeipaiSpider(scrapy.Spider):
         video_id = re.match(r'.*media/(\d+)', response.url).group(1)
         #print('video_id------------->'+video_id)
 
-        video_title = response.xpath("//h1[@class='detail-description break']").extract_first()
+        video_title = response.xpath(".//h1[@class='detail-description break']").extract_first()
         #print('video_title---------->'+video_title)
 
-        count = response.xpath("//div[@class='detail-info pr']/div[@class='detail-location']").extract_first()
+        count = response.xpath(".//div[@class='detail-info pr']/div[@class='detail-location']").extract_first()
         count = str(count).replace(' ', '').replace('\n', '')
         _c = re.match(r'.*</i>(.*)</div>$', count).group(1)
         _co = re.findall(r'\d*', _c)
@@ -61,15 +68,20 @@ class MeipaiSpider(scrapy.Spider):
 
         #print('video_count--------------->'+str(play_count))
 
-        duration = str(response.xpath("//div[@class='mp-h5-player-layer-control-tool-time']/text()").extract_first()).replace(' / ', '')
+        duration = str(response.xpath(".//div[@class='mp-h5-player-layer-control-tool-time']/text()").extract_first()).replace(' / ', '')
         _d = re.findall(r'\d*', duration)
+        #print(duration)
         video_duration = str(int(_d[0]) * 60 + int(_d[2]))
         #print('duration--------->' + video_duration)
 
         #print('video_url-------------->'+response.url)
 
-        video_cover = str(response.xpath("//div[@id='detailVideo']/img/@src").extract_first()).replace('!thumb480', '')
+        video_cover = str(response.xpath(".//div[@id='detailVideo']/img/@src").extract_first()).replace('!thumb480', '')
         #print('video_cover--------------->'+video_cover)
+
+        _s = random.sample([random.randint(1, 100000000000)], 1)
+        _t = int(round(time.time() * 1000))
+        i_id = _s[0] + _t
 
 ########################################################################################################################
         item = MiaoPaiItem()
@@ -88,8 +100,8 @@ class MeipaiSpider(scrapy.Spider):
         item['meta_data'] = None
         item['video_width'] = 500
         item['video_height'] = 500
+        item['i_id'] = i_id
         yield item
-
 
 
 

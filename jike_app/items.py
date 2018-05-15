@@ -88,6 +88,7 @@ class DouyinItem(scrapy.Item):
     digg_count = scrapy.Field()
 
 class MiaoPaiItem(scrapy.Item):
+    i_id = scrapy.Field()
     channel_id = scrapy.Field()
     media_id = scrapy.Field()
     media_name = scrapy.Field()
