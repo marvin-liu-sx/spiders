@@ -137,10 +137,17 @@ import xlrd
 #             a = re.findall(r'http://www.meipai.com/media/\d*', trdata[0])[0]
 #             data_arr.append(a)
 # print(len(data_arr))
-# import re
-# a = '总播放数16191'
-# b = re.match(r'.*?(\d+)', a).group(1)
-# print(b)
+import re
+from urllib import parse
+a = 'type=feedvideo&objectid=1034:ec316b81d1d459c761106f4bdd540cc7&mid=4049368656490844&fnick=%E4%B8%80%E4%B8%AAApp%E5%B7%A5%E4%BD%9C%E5%AE%A4&uid=1766610575&video_src=%2F%2Fus.sinaimg.cn%2F003cCSn5jx076X4TZk6s05040100BniY0k01.mp4%3Flabel%3Dmp4_hd%26Expires%3D1526474612%26ssig%3DMPIEG6saNM%26KID%3Dunistore%2Cvideo&playerType=proto&cover_img=http%3A%2F%2Fww2.sinaimg.cn%2Forj480%2F736f0c7ejw1fag0puoqfcj20g008g0u9.jpg&card_height=304&card_width=576&keys=4049368658264228&short_url=&play_count=2234&duration=356&encode_mode=crf&bitrate=188'
+b = re.match(r'.*cover_img=(.*)&card_height', a).group(1)
+c = parse.unquote(b)
+d = re.match(r'.*play_count=(.*)&duration', a).group(1)
+if d:
+    print(d)
+# print(c)
+# print(type(d))
+# print(d)
 import time
 # b = []
 # for i in range(859):
@@ -148,7 +155,6 @@ import time
 #     b.append(a)
 # print(b)
 # print(len(b))
-
 
 # import random
 # d = []
@@ -164,13 +170,18 @@ import time
 # _s = random.sample([random.randint(1, 100000000)], 1)
 # print(_s)
 # import base64
-# a = base64.b64encode('火哥美食'.encode('utf-8')).decode()
+# a = base64.b64encode(''.encode('utf-8')).decode()
 # print(a)
 
-
-
-
-
+# from selenium import webdriver
+# browser = webdriver.Chrome(executable_path="F:/chromedriver.exe")
+# browser.get('https://weibo.com/tv/v/80528b2110a536920878daa8588e570d?fid=1034:80528b2110a536920878daa8588e570d')
+# import time
+# time.sleep(5)
+# video = browser.find_element_by_xpath('//div[@class="con-2 hv-pos hv-center"]/video')
+# print(video)
+# video.click()
+#browser.execute_script("$(arguments[0]).click()", video)
 
 
 

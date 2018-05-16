@@ -63,14 +63,62 @@ from scrapy.http import HtmlResponse
 class JSPageMiddleware(object):
 
     def __init__(self):
-        self.browser = webdriver.Chrome(executable_path="F:/chromedriver.exe")
+        self.options = webdriver.ChromeOptions()
+        self.options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 '
+                                  '(KHTML, like Gecko) Chrome/67.0.3371.0 Safari/537.36"')
+        prefs = {
+            'profile.default_content_setting_values': {
+                'images': 2
+            }
+        }
+        self.options.add_experimental_option("prefs", prefs)
+        self.browser = webdriver.Chrome(executable_path="F:/chromedriver.exe", chrome_options=self.options)
         super(JSPageMiddleware, self).__init__()
 
     def process_request(self, request, spider):
-        if spider.name == 'meipai':
+        if spider.name == 'weibo':
+            self.browser.get(request.url)
+            import time
+            time.sleep(8)
+            print('middleware启动')
+            return HtmlResponse(url=self.browser.current_url, body=self.browser.page_source,
+                                encoding='utf-8', request=request)
+
+
+class WeiboPageMiddleware(object):
+
+    def __init__(self):
+        self.options = webdriver.ChromeOptions()
+        self.options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 '
+                                  '(KHTML, like Gecko) Chrome/67.0.3371.0 Safari/537.36"')
+        prefs = {
+            'profile.default_content_setting_values': {
+                'images': 2
+            }
+        }
+        self.options.add_experimental_option("prefs", prefs)
+        self.browser = webdriver.Chrome(executable_path="F:/chromedriver.exe", chrome_options=self.options)
+        super(WeiboPageMiddleware, self).__init__()
+
+    def process_request(self, request, spider):
+        if spider.name == 'weibo':
+            # options = webdriver.ChromeOptions()
+            # options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 '
+            #                      '(KHTML, like Gecko) Chrome/67.0.3371.0 Safari/537.36"')
+            # prefs = {
+            #     'profile.default_content_setting_values': {
+            #         'images': 2
+            #     }
+            # }
+            # options.add_experimental_option("prefs", prefs)
+            # browser = webdriver.Chrome(executable_path="F:/chromedriver.exe", chrome_options=options)
             self.browser.get(request.url)
             import time
             time.sleep(5)
+            video = self.browser.find_element_by_xpath('.//div[@class="con-2 hv-pos hv-center"]/video')
+            print(video)
+            video.click()
             print('middleware启动')
+            time.sleep(3)
             return HtmlResponse(url=self.browser.current_url, body=self.browser.page_source,
                                 encoding='utf-8', request=request)

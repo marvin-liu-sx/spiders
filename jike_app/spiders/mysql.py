@@ -46,8 +46,17 @@ class DataProducer(object):
         connect.close()
 
 
+def _fun1():
+    print('hello')
+
+
+def _fun2():
+    print('world')
+
+
 if __name__ == '__main__':
-    DataProducer().process_item()
     from concurrent.futures import ThreadPoolExecutor
+
     with ThreadPoolExecutor(max_workers=10) as pool:
-        pool.submit(DataProducer().process_item())
+        pool.submit(_fun1())
+        pool.submit(_fun2())
