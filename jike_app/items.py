@@ -97,6 +97,7 @@ class MiaoPaiItem(scrapy.Item):
     play_count = scrapy.Field()
     video_duration = scrapy.Field()
     video_url = scrapy.Field()
+    play_url = scrapy.Field()
     video_cover = scrapy.Field()
     source = scrapy.Field()
     status = scrapy.Field()

@@ -137,14 +137,14 @@ import xlrd
 #             a = re.findall(r'http://www.meipai.com/media/\d*', trdata[0])[0]
 #             data_arr.append(a)
 # print(len(data_arr))
-import re
-from urllib import parse
-a = 'type=feedvideo&objectid=1034:ec316b81d1d459c761106f4bdd540cc7&mid=4049368656490844&fnick=%E4%B8%80%E4%B8%AAApp%E5%B7%A5%E4%BD%9C%E5%AE%A4&uid=1766610575&video_src=%2F%2Fus.sinaimg.cn%2F003cCSn5jx076X4TZk6s05040100BniY0k01.mp4%3Flabel%3Dmp4_hd%26Expires%3D1526474612%26ssig%3DMPIEG6saNM%26KID%3Dunistore%2Cvideo&playerType=proto&cover_img=http%3A%2F%2Fww2.sinaimg.cn%2Forj480%2F736f0c7ejw1fag0puoqfcj20g008g0u9.jpg&card_height=304&card_width=576&keys=4049368658264228&short_url=&play_count=2234&duration=356&encode_mode=crf&bitrate=188'
-b = re.match(r'.*cover_img=(.*)&card_height', a).group(1)
-c = parse.unquote(b)
-d = re.match(r'.*play_count=(.*)&duration', a).group(1)
-if d:
-    print(d)
+# import re
+# from urllib import parse
+# a = 'type=feedvideo&objectid=1034:ec316b81d1d459c761106f4bdd540cc7&mid=4049368656490844&fnick=%E4%B8%80%E4%B8%AAApp%E5%B7%A5%E4%BD%9C%E5%AE%A4&uid=1766610575&video_src=%2F%2Fus.sinaimg.cn%2F003cCSn5jx076X4TZk6s05040100BniY0k01.mp4%3Flabel%3Dmp4_hd%26Expires%3D1526474612%26ssig%3DMPIEG6saNM%26KID%3Dunistore%2Cvideo&playerType=proto&cover_img=http%3A%2F%2Fww2.sinaimg.cn%2Forj480%2F736f0c7ejw1fag0puoqfcj20g008g0u9.jpg&card_height=304&card_width=576&keys=4049368658264228&short_url=&play_count=2234&duration=356&encode_mode=crf&bitrate=188'
+# b = re.match(r'.*cover_img=(.*)&card_height', a).group(1)
+# c = parse.unquote(b)
+# d = re.match(r'.*play_count=(.*)&duration', a).group(1)
+# if d:
+#     print(b)
 # print(c)
 # print(type(d))
 # print(d)
@@ -183,13 +183,33 @@ import time
 # video.click()
 #browser.execute_script("$(arguments[0]).click()", video)
 
+# from urllib import request
+#from PIL import Image
+# from io import StringIO, BytesIO
+# from io import BytesIO
+# path = "http://image.pearvideo.com/cont/20180502/cont-1335699-11197347.jpg"
+# file = request.urlopen(path)
+# print(file.read())
+# tmpIm = BytesIO(file.read())
+#img = Image.open(r'C:\Users\zc-yy\Desktop\cont-1338889-11208528.png')
+#print(img.size)
+# #
+# # #print()        # JPEG
+# print(img.size)           # (801, 1200)
 
-
-
-
-
-
-
+# from io import BytesIO
+#
+# # write to BytesIO:
+# f = BytesIO()
+# f.write(b'hello')
+# f.write(b' ')
+# f.write(b'world!')
+# print(f.getvalue())
+#
+# # read from BytesIO:
+# data = '人闲桂花落，夜静春山空。月出惊山鸟，时鸣春涧中。'.encode('utf-8')
+# f = BytesIO(data)
+# print(f.read())
 
 
 

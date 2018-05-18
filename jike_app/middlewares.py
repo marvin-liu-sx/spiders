@@ -76,7 +76,7 @@ class JSPageMiddleware(object):
         super(JSPageMiddleware, self).__init__()
 
     def process_request(self, request, spider):
-        if spider.name == 'weibo':
+        if spider.name == 'pear':
             self.browser.get(request.url)
             import time
             time.sleep(8)
@@ -101,7 +101,7 @@ class WeiboPageMiddleware(object):
         super(WeiboPageMiddleware, self).__init__()
 
     def process_request(self, request, spider):
-        if spider.name == 'weibo':
+        if spider.name == 'pear':
             # options = webdriver.ChromeOptions()
             # options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 '
             #                      '(KHTML, like Gecko) Chrome/67.0.3371.0 Safari/537.36"')
@@ -115,10 +115,11 @@ class WeiboPageMiddleware(object):
             self.browser.get(request.url)
             import time
             time.sleep(5)
-            video = self.browser.find_element_by_xpath('.//div[@class="con-2 hv-pos hv-center"]/video')
+            video = self.browser.find_element_by_xpath('.//i[@class="i-icon play-icon"]')
+            #video = self.browser.find_element_by_xpath('.//div[@id="beginLayerImg"]')
             print(video)
             video.click()
             print('middleware启动')
-            time.sleep(3)
+            time.sleep(5)
             return HtmlResponse(url=self.browser.current_url, body=self.browser.page_source,
                                 encoding='utf-8', request=request)
