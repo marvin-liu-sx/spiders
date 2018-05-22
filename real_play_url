@@ -14,25 +14,25 @@ ssig=1f0cfccef9e4b93dbbd6c44dd99af4ab
 
 
 
-
+------------------------------------------------------------------------------------------------------------------------
 美拍video_url:http://www.meipai.com/media/990160994
 真实地址div[@class='mp-h5-player-layer-video']标签下的video标签中的src标签，video id 会随机进行变化
 video_id:video9GGDC7BxnpbTNEO6
 src:http://mvvideo11.meitudata.com/5adb2c84537941358_H264_3_5.mp4?
 k=837d6c56eaa5913c357626cd68c02971
 &t=5b066619
+------------------------------------------------------------------------------------------------------------------------
 
 
 
-
-
+------------------------------------------------------------------------------------------------------------------------
 B站:video_url:https://www.bilibili.com/video/av14634058
 真实地址:video标签下的src:blob:https://www.bilibili.com/65d1174b-a62c-4075-97eb-8fe9a5213b6a
 暂时无法确定具体的播放形式
+------------------------------------------------------------------------------------------------------------------------
 
 
-
-
+------------------------------------------------------------------------------------------------------------------------
 微博video_url:https://weibo.com/tv/v/80528b2110a536920878daa8588e570d?fid=1034:80528b2110a536920878daa8588e570d
 真实地址:video标签下的src:
 f.us.sinaimg.cn/0025ws8Zlx07jS5jEKRy01040201dlRV0k010.mp4?
@@ -41,13 +41,50 @@ label=mp4_720p
 &Expires=1526890839
 &ssig=usqSsbSs6x
 &KID=unistore,video
+------------------------------------------------------------------------------------------------------------------------
 
 
-
-
+------------------------------------------------------------------------------------------------------------------------
 梨视频:video_url:http://www.pearvideo.com/video_1337335
 真实地址:video标签下的src:
 暂定为静态的地址:http://video.pearvideo.com/mp4/adshort/20180503/cont-1336528-11998086_adpkg-ad_hd.mp4
+
+
+1、
+梨视频当前的视频信息接口:http://app.pearvideo.com/clt/jsp/v4/content.jsp
+post请求，post参数为contId = 1337335
+返回为json数据,注意相应的headers设置
+
+
+2、
+梨视频的与当前视频相关的视频接口:http://app.pearvideo.com/clt/jsp/v4/interestNextCont.jsp?contId=1059734&page=1
+contId为参数
+
+3、headers设置
+{
+Host: app.pearvideo.com
+User-Agent: LiVideoIOS/4.2.4 (iPhone; iOS 11.3.1; Scale/3.00)
+X-Channel-Code: official
+X-Long-Token:
+Cookie: JSESSIONID=7B98E42C72751A7BD064E3D8142F9DD0; __ads_session=QagFMzr5GQngBzuHNAA=; PEAR_PLATFORM=1; PEAR_UUID=4FD7CEC1-5E64-4184-9974-1EE2560005AC; PV_APP=srv-pv-prod-portal4
+X-Platform-Type: 1
+X-Client-ID: 4FD7CEC1-5E64-4184-9974-1EE2560005AC
+X-Serial-Num: 1526972341
+X-Client-Agent: APPLE_iPhone10,3_iOS11.3.1
+X-Client-Version: 4.2.4
+Content-Length: 14
+X-Platform-Version: 11.3.1
+X-Location: 116.358208,39.982803%7C%E4%B8%AD%E5%9B%BD,%E5%8C%97%E4%BA%AC%E5%B8%82,%E5%8C%97%E4%BA%AC%E5%B8%82,%E6%B5%B7%E6%B7%80%E5%8C%BA
+Connection: keep-alive
+X-Client-Hash: 66a8c06fe1a76aa6b293da4f1930748d
+Accept-Language: zh-Hans-CN;q=1
+X-User-ID:
+Accept: */*
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+
+}
+------------------------------------------------------------------------------------------------------------------------
 
 
 ************************************************************************************************************************

@@ -53,7 +53,7 @@ COOKIES_ENABLED = False
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'jike_app.middlewares.WeiboPageMiddleware': 1,
+   #'jike_app.middlewares.WeiboPageMiddleware': 1,
 }
 
 # Enable or disable extensions
@@ -69,7 +69,7 @@ ITEM_PIPELINES = {
     # 'jike_app.pipelines.JsonExporterPipleline': 300,
     # 'jike_app.pipelines.JsonWithEncodingPipline': 300,
     #'jike_app.pipelines.JikeMessagesPipeline': 300,
-    'jike_app.pipelines.MiaoPaiPipline': 300
+    #'jike_app.pipelines.MiaoPaiPipline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
