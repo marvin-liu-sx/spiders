@@ -9,22 +9,18 @@ import time
 import random
 
 
-#data_arr = ['http://www.meipai.com/media/990160994']
-
-data_arr = ['http://www.meipai.com/media/995115487', 'http://www.meipai.com/media/998269732', 'http://www.meipai.com/media/997473082',
-            'http://www.meipai.com/media/997875509', 'http://www.meipai.com/media/997074362', 'http://www.meipai.com/media/998408000',
-            'http://www.meipai.com/media/997775997', 'http://www.meipai.com/media/997510646', 'http://www.meipai.com/media/995734046',
-            'http://www.meipai.com/media/998153839', 'http://www.meipai.com/media/983749310', 'http://www.meipai.com/media/921923049',
-            'http://www.meipai.com/media/991249171', 'http://www.meipai.com/media/939986747', 'http://www.meipai.com/media/985397404']
-
-# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
-#     table = book.sheet_by_name('zhishi')
+data_arr = []
+#
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
+#     table = book.sheet_by_name('qita')
 #     row_count = table.nrows
 #     for row in range(1, row_count):
 #         trdata = table.row_values(row)
-#         if 'https://www.meipai.com/' in trdata[0]:
-#             a = re.findall(r'https://www.meipai.com/media/\d*', trdata[0])[0]
+#         if 'http://www.meipai.com/' in trdata[0]:
+#             a = re.findall(r'http://www.meipai.com/media/\d*', trdata[0])[0]
 #             data_arr.append(a)
+# print(data_arr)
+# print(len(data_arr))
 
 
 class MeipaiSpider(scrapy.Spider):
@@ -76,8 +72,14 @@ class MeipaiSpider(scrapy.Spider):
 
         #print('video_url-------------->'+response.url)
 
-        video_cover = str(response.xpath(".//div[@id='detailVideo']/img/@src").extract_first()).replace('!thumb480', '')
+        video_cover = response.xpath(".//div[@id='detailVideo']/img/@src").extract_first()
         #print('video_cover--------------->'+video_cover)
+
+        _p = response.xpath(".//div[@class='mp-h5-player-layer-video']/video/@src").extract_first()
+        if _p:
+            play_url = re.match(r'.*^(.*)\?', _p).group(1)
+        else:
+            play_url = '暂无'
 
         _s = random.sample([random.randint(1, 100000000000)], 1)
         _t = int(round(time.time() * 1000))
@@ -95,13 +97,15 @@ class MeipaiSpider(scrapy.Spider):
         item['video_duration'] = video_duration
         item['video_url'] = response.url
         item['video_cover'] = video_cover
-        item['source'] = 4
+        item['source'] = 8
         item['status'] = 0
         item['meta_data'] = None
         item['video_width'] = 500
         item['video_height'] = 500
         item['i_id'] = i_id
+        item['play_url'] = play_url
         yield item
+        # 美拍的source 为8
 
 
 

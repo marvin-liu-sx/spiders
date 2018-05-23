@@ -85,10 +85,11 @@ class BiliSpider(scrapy.Spider):
         item['video_duration'] = video_duration
         item['video_url'] = response.url
         item['video_cover'] = video_cover
-        item['source'] = 5
+        item['source'] = 9
         item['status'] = 0
         item['meta_data'] = None
         item['i_id'] = i_id
         item['video_width'] = 680
         item['video_height'] = 440
         print(item)
+        # B站的source为9

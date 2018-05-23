@@ -10,16 +10,16 @@ import time
 import random
 from urllib import parse
 
-data_arr = []
-
-with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
-    table = book.sheet_by_name('zhishi')
-    row_count = table.nrows
-    for row in range(1, row_count):
-        trdata = table.row_values(row)
-        if 'https://weibo.com/tv/v/' in trdata[0]:
-            a = re.findall(r'https://weibo.com/tv/v/.*', trdata[0])[0]
-            data_arr.append(a)
+# data_arr = []
+#
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
+#     table = book.sheet_by_name('zhishi')
+#     row_count = table.nrows
+#     for row in range(1, row_count):
+#         trdata = table.row_values(row)
+#         if 'https://weibo.com/tv/v/' in trdata[0]:
+#             a = re.findall(r'https://weibo.com/tv/v/.*', trdata[0])[0]
+#             data_arr.append(a)
 
 
 class WeiboSpider(scrapy.Spider):

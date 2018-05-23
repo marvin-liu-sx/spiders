@@ -217,3 +217,23 @@ import time
 # if q.not_empty:
 #     for i in range(q.qsize()):
 #         print(q.get())
+# import re
+# data_arr = []
+#
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
+#     table = book.sheet_by_name('tiyuyouxi')
+#     row_count = table.nrows
+#     for row in range(1, row_count):
+#         trdata = table.row_values(row)
+#         if 'https://www.meipai.com/' in trdata[0]:
+#             a = re.findall(r'https://www.meipai.com/media/\d*', trdata[0])[0]
+#             data_arr.append(a)
+#         # elif 'http://www.meipai.com/' in trdata[0]:
+#         #     a = re.findall(r'http://www.meipai.com/media/\d*', trdata[0])[0]
+#         #     data_arr.append(a)
+# print(data_arr)
+# print(len(data_arr))
+import re
+# a = 'http://www.pearvideo.com/video_1340473'
+# b = re.match(r'.*video_(\d*)', a).group(1)
+# print(b)

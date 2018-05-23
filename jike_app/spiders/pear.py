@@ -7,11 +7,8 @@ import re
 from ..items import MiaoPaiItem
 import time
 import random
-from scrapy import signals
-from scrapy.xlib.pydispatch import dispatcher
 
-data_arr = ['http://www.pearvideo.com/video_1337384', 'http://www.pearvideo.com/video_1339500',
-            'http://www.pearvideo.com/video_1337407']
+data_arr = []
 
 # with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
 #     table = book.sheet_by_name('zhishi')
