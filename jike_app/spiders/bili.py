@@ -8,17 +8,18 @@ from ..items import MiaoPaiItem
 import time
 import random
 
-data_arr = ['https://www.bilibili.com/video/av22311227']
+data_arr = []
 
-# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
-#     table = book.sheet_by_name('qita')
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
+#     table = book.sheet_by_name('yulemingxing')
 #     row_count = table.nrows
 #     for row in range(1, row_count):
 #         trdata = table.row_values(row)
 #         if 'https://www.bilibili.com/' in trdata[0]:
 #             a = re.findall(r'https://www.bilibili.com/video/av\d*', trdata[0])[0]
 #             data_arr.append(a)
-
+# print(data_arr)
+# print(len(data_arr))
 
 class BiliSpider(scrapy.Spider):
     name = 'bili'
@@ -35,7 +36,7 @@ class BiliSpider(scrapy.Spider):
             yield Request(url=i, method='GET', headers=self.default_header, encoding='utf-8', callback=self.parse)
 
     def parse(self, response):
-        channel_id = '其他'
+        channel_id = '娱乐明星'
         #print('channel_id--------->'+channel_id)
 
         media_name = response.xpath(".//div[@class='user clearfix']/a/text()").extract_first()
@@ -82,6 +83,7 @@ class BiliSpider(scrapy.Spider):
         item['video_id'] = video_id
         item['video_title'] = video_title
         item['play_count'] = play_count
+        item['play_url'] = 'changeable'
         item['video_duration'] = video_duration
         item['video_url'] = response.url
         item['video_cover'] = video_cover
@@ -89,7 +91,7 @@ class BiliSpider(scrapy.Spider):
         item['status'] = 0
         item['meta_data'] = None
         item['i_id'] = i_id
-        item['video_width'] = 680
-        item['video_height'] = 440
-        print(item)
+        item['video_width'] = 846
+        item['video_height'] = 566
+        yield item
         # B站的source为9

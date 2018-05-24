@@ -10,9 +10,9 @@ import time
 import random
 from urllib import parse
 
-# data_arr = []
-#
-# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\1.xlsx') as book:
+data_arr = []
+
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
 #     table = book.sheet_by_name('zhishi')
 #     row_count = table.nrows
 #     for row in range(1, row_count):
@@ -20,7 +20,8 @@ from urllib import parse
 #         if 'https://weibo.com/tv/v/' in trdata[0]:
 #             a = re.findall(r'https://weibo.com/tv/v/.*', trdata[0])[0]
 #             data_arr.append(a)
-
+# print(data_arr)
+# print(len(data_arr))
 
 class WeiboSpider(scrapy.Spider):
     name = 'weibo'
@@ -117,11 +118,11 @@ class WeiboSpider(scrapy.Spider):
             video_height = 0
         #print('video_height---------->'+str(video_height))
 
-        _p = response.xpath(".//div[@class='con-2 hv-pos hv-center']/video/@src").extract_first()
-        if _p:
-            play_url = re.match(r'.*//(.*)', _p).group(1)
-        else:
-            play_url = 'NoData'
+        #_p = response.xpath(".//div[@class='con-2 hv-pos hv-center']/video/@src").extract_first()
+        # if _p:
+        #     play_url = re.match(r'.*//(.*)', _p).group(1)
+        # else:
+        #     play_url = 'ch'
         #print('play_url------------->' + str(play_url))
 
 #######################################################################################################################
@@ -135,11 +136,11 @@ class WeiboSpider(scrapy.Spider):
         item['video_duration'] = video_duration
         item['video_url'] = response.url
         item['video_cover'] = video_cover
-        item['source'] = 6
+        item['source'] = 10
         item['status'] = 0
         item['meta_data'] = None
         item['i_id'] = i_id
         item['video_width'] = video_width
         item['video_height'] = video_height
-        item['play_url'] = play_url
+        item['play_url'] = 'changeable'
         yield item
