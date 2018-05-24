@@ -10,18 +10,18 @@ import xlrd
 from ..items import MiaoPaiItem
 
 data_arr = []
-
-with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
-    table = book.sheet_by_name('zhishi')
-    row_count = table.nrows
-    for row in range(1, row_count):
-        trdata = table.row_values(row)
-        if 'http://www.pearvideo.com/' in trdata[0]:
-            re_data = re.match(r'.*?(\d+)', trdata[0]).group(1)
-            data_arr.append(re_data)
-
-print(data_arr)
-print(len(data_arr))
+#
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
+#     table = book.sheet_by_name('zhishi')
+#     row_count = table.nrows
+#     for row in range(1, row_count):
+#         trdata = table.row_values(row)
+#         if 'http://www.pearvideo.com/' in trdata[0]:
+#             re_data = re.match(r'.*?(\d+)', trdata[0]).group(1)
+#             data_arr.append(re_data)
+#
+# print(data_arr)
+# print(len(data_arr))
 
 
 class RandomHeader(object):

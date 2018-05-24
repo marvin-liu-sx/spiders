@@ -52,7 +52,6 @@ import xlrd
 # my_print()
 
 
-
 # request_headers = {
 #         'Host': 'app.jike.ruguoapp.com',
 #         'Accept': '*/*',
@@ -181,18 +180,18 @@ import time
 # video = browser.find_element_by_xpath('//div[@class="con-2 hv-pos hv-center"]/video')
 # print(video)
 # video.click()
-#browser.execute_script("$(arguments[0]).click()", video)
+# browser.execute_script("$(arguments[0]).click()", video)
 
 # from urllib import request
-#from PIL import Image
+# from PIL import Image
 # from io import StringIO, BytesIO
 # from io import BytesIO
 # path = "http://image.pearvideo.com/cont/20180502/cont-1335699-11197347.jpg"
 # file = request.urlopen(path)
 # print(file.read())
 # tmpIm = BytesIO(file.read())
-#img = Image.open(r'C:\Users\zc-yy\Desktop\cont-1338889-11208528.png')
-#print(img.size)
+# img = Image.open(r'C:\Users\zc-yy\Desktop\cont-1338889-11208528.png')
+# print(img.size)
 # #
 # # #print()        # JPEG
 # print(img.size)           # (801, 1200)
@@ -233,7 +232,34 @@ import time
 #         #     data_arr.append(a)
 # print(data_arr)
 # print(len(data_arr))
-import re
-# a = 'http://www.pearvideo.com/video_1340473'
-# b = re.match(r'.*video_(\d*)', a).group(1)
+# import re
+# a = 'https://www.bilibili.com/video/av22787592?from=search&seid=1151914153239738928'
+# b = re.match(r'.*video/av(\d*)', a).group(1)
 # print(b)
+from hashlib import md5
+from string import ascii_letters, digits
+from itertools import permutations
+from time import time
+
+all_letters = ascii_letters + digits + '.,;'
+
+
+def decrypt_md5(md5_value):
+    if len(md5_value) != 32:
+        print('error')
+        return
+    md5_value = md5_value.lower()
+    for k in range(5, 10):
+        for item in permutations(all_letters, k):
+            item = ''.join(item)
+            print('.', end='')
+            if md5(item.encode()).hexdigest() == md5_value:
+                return item
+
+
+md5_value = '6aa5092c78f9b61b1bacfe17989f6ec5'
+start = time()
+result = decrypt_md5(md5_value)
+if result:
+    print('\n Success: ' + md5_value + '==>' + result)
+print('Time used:', time() - start)
