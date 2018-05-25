@@ -233,6 +233,7 @@ import time
 # print(data_arr)
 # print(len(data_arr))
 import re
+
 a = 'https://m.365yg.com/group/6555805421561446915'
 b = re.match(r'.*group/(\d+)', a).group(1)
 print(b)
@@ -263,3 +264,57 @@ print(b)
 # if result:
 #     print('\n Success: ' + md5_value + '==>' + result)
 # print('Time used:', time() - start)
+# a = 'https://app.bilibili.com/v2/playurl?' \
+#     'appkey=YvirImLGlLANCLvM' \
+#     '&build=6680' \
+#     '&buvid=1134402fc290d710313b9db99e310eed&' \
+#     'cid=39922399' \
+#     '&device=phone' \
+#     '&otype=json' \
+#     '&platform=iphone' \
+#     '&qn=16' \
+#     '&sign=36e8ec6971b6c089409aea3ee9ecbf64'
+
+a = {'build': '6680', 'buvid': '1134402fc290d710313b9db99e310eed',
+     'cid': '39922399', 'device': 'phone', 'otype': 'json', 'platform': 'iphone',
+     'qn': '16', 'appkey': 'YvirImLGlLANCLvM'}
+# from urllib import parse
+# import hashlib
+#
+#
+# def GetSign(params, appkey, AppSecret=None):
+#     params['appkey'] = appkey
+#     data = ""
+#     paras = params.keys()
+#     #print(list(params.keys()))
+#     sorted(paras)
+#     data = parse.urlencode(params)
+#     #print(data)
+#     if AppSecret == None:
+#         return data
+#     m = hashlib.md5()
+#     m.update(data + AppSecret)
+#     return data + '&sign=' + m.hexdigest()
+#
+#
+# if __name__ == '__main__':
+#     print(GetSign(a, 'YvirImLGlLANCLvM', AppSecret=None))
+keys = a.keys()
+print(keys)
+b = [1,2,3]
+print(sorted(b, reverse=True))
+s_keys = sorted(keys, reverse=True)
+print(list(s_keys))
+
+# new_dic = a[s_keys[0]]+a[s_keys[1]]+a[s_keys[2]]+a[s_keys[3]]+a[s_keys[4]]+a[s_keys[5]]+a[s_keys[6]]
+# print(new_dic)
+data = ''
+for i in list(s_keys):
+    data = data+i+a[i]
+print(data)
+
+
+
+
+
+

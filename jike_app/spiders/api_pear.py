@@ -10,7 +10,7 @@ import xlrd
 from ..items import MiaoPaiItem
 
 data_arr = []
-#
+
 # with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
 #     table = book.sheet_by_name('zhishi')
 #     row_count = table.nrows
@@ -65,7 +65,7 @@ class ApiPearSpider(scrapy.Spider):
         if response.status == 200:
             print('请求成功')
             data = json.loads(str(response.body, encoding='utf-8'))
-            # print(json.dumps(data))
+            print(json.dumps(data))
             if data['resultMsg'] == 'success':
                 print('数据返回成功')
 
@@ -136,7 +136,7 @@ class ApiPearSpider(scrapy.Spider):
                 item['video_width'] = 640
                 item['video_height'] = 360
 
-                yield item
+                print(item)
 
 
             else:

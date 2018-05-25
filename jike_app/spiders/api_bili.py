@@ -82,6 +82,7 @@ class ApiBiliSpider(scrapy.Spider):
 
     def parse(self, response):
         if response.status == 200:
+            print(str(response.body, encoding='utf-8'))
             print('请求成功')
             data = json.loads(str(response.body, encoding='utf-8'))
             print(data)
