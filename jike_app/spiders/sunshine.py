@@ -10,16 +10,16 @@ import random
 
 data_arr = []
 
-with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
-    table = book.sheet_by_name('tiyuyouxi')
-    row_count = table.nrows
-    for row in range(1, row_count):
-        trdata = table.row_values(row)
-        if 'https://m.365yg.com/' in trdata[0]:
-            re_data = re.match(r'(.*iid=)', trdata[0]).group(1).replace('/?iid=', '')
-            data_arr.append(re_data)
-print(data_arr)
-print(len(data_arr))
+# with xlrd.open_workbook(r'C:\Users\zc-yy\Desktop\2.xlsx') as book:
+#     table = book.sheet_by_name('tiyuyouxi')
+#     row_count = table.nrows
+#     for row in range(1, row_count):
+#         trdata = table.row_values(row)
+#         if 'https://m.365yg.com/' in trdata[0]:
+#             re_data = re.match(r'(.*iid=)', trdata[0]).group(1).replace('/?iid=', '')
+#             data_arr.append(re_data)
+# print(data_arr)
+# print(len(data_arr))
 
 
 class SunshineSpider(scrapy.Spider):

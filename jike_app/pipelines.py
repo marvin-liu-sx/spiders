@@ -182,13 +182,14 @@ class MiaoPaiPipline(object):
             charset='utf8mb4'
         )
         cursor = connect.cursor()
-        sql = "INSERT INTO yunying (i_id, channel_id, media_id, media_name, video_id, video_title, play_count," \
+        sql = "INSERT INTO yunying (i_id, channel_id, topic, question_type, media_name, media_id, video_title, video_id, play_count," \
               " play_url, video_duration,video_url, video_cover, source, status, meta_data, video_width, video_height)" \
-              "VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+              "VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
         data = (
-            item['i_id'], item['channel_id'], item['media_id'], item['media_name'], item['video_id'], item['video_title'],
-            item['play_count'], item['play_url'], item['video_duration'], item['video_url'], item['video_cover'], item['source'],
-            item['status'], item['meta_data'], item['video_width'], item['video_height'])
+            item['i_id'], item['channel_id'], item['topic'], item['question_type'], item['media_name'],
+            item['media_id'], item['video_title'], item['video_id'], item['play_count'], item['play_url'],
+            item['video_duration'], item['video_url'], item['video_cover'], item['source'], item['status'],
+            item['meta_data'], item['video_width'], item['video_height'])
         try:
             cursor.execute(sql % data)
             connect.commit()

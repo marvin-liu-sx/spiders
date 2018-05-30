@@ -275,9 +275,9 @@ print(b)
 #     '&qn=16' \
 #     '&sign=36e8ec6971b6c089409aea3ee9ecbf64'
 
-a = {'build': '6680', 'buvid': '1134402fc290d710313b9db99e310eed',
-     'cid': '39922399', 'device': 'phone', 'otype': 'json', 'platform': 'iphone',
-     'qn': '16', 'appkey': 'YvirImLGlLANCLvM'}
+# a = {'build': '6680', 'buvid': '1134402fc290d710313b9db99e310eed',
+#      'cid': '39922399', 'device': 'phone', 'otype': 'json', 'platform': 'iphone',
+#      'qn': '16', 'appkey': 'YvirImLGlLANCLvM'}
 # from urllib import parse
 # import hashlib
 #
@@ -299,19 +299,19 @@ a = {'build': '6680', 'buvid': '1134402fc290d710313b9db99e310eed',
 #
 # if __name__ == '__main__':
 #     print(GetSign(a, 'YvirImLGlLANCLvM', AppSecret=None))
-keys = a.keys()
-print(keys)
-b = [1,2,3]
-print(sorted(b, reverse=True))
-s_keys = sorted(keys, reverse=True)
-print(list(s_keys))
+# keys = a.keys()
+# print(keys)
+# b = [1,2,3]
+# print(sorted(b, reverse=True))
+# s_keys = sorted(keys, reverse=True)
+# print(list(s_keys))
 
 # new_dic = a[s_keys[0]]+a[s_keys[1]]+a[s_keys[2]]+a[s_keys[3]]+a[s_keys[4]]+a[s_keys[5]]+a[s_keys[6]]
 # print(new_dic)
-data = ''
-for i in list(s_keys):
-    data = data+i+a[i]
-print(data)
+# data = ''
+# for i in list(s_keys):
+#     data = data+i+a[i]
+# print(data)
 
 
 

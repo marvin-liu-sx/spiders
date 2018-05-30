@@ -104,3 +104,5 @@ class MiaoPaiItem(scrapy.Item):
     meta_data = scrapy.Field()
     video_width = scrapy.Field()
     video_height = scrapy.Field()
+    topic = scrapy.Field()
+    question_type = scrapy.Field()
