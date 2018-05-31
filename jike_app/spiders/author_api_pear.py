@@ -136,11 +136,11 @@ class AuthorApiPearSpider(scrapy.Spider):
                         pass
 
             if json_data['nextUrl']:
-                print('Has More Data')
+                print('Has-More-Data')
                 yield scrapy.Request(url=json_data['nextUrl'], method='GET', headers=RandomHeader().get_header(),
                                      callback=self.detail_parse, dont_filter=True)
             else:
-                print('No More Data')
+                print('No-More-Data')
         else:
             print('请求失败')
 

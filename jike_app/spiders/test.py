@@ -232,11 +232,11 @@ import time
 #         #     data_arr.append(a)
 # print(data_arr)
 # print(len(data_arr))
-import re
-
-a = 'https://m.365yg.com/group/6555805421561446915'
-b = re.match(r'.*group/(\d+)', a).group(1)
-print(b)
+# import re
+#
+# a = 'https://m.365yg.com/group/6555805421561446915'
+# b = re.match(r'.*group/(\d+)', a).group(1)
+# print(b)
 # from hashlib import md5
 # from string import ascii_letters, digits
 # from itertools import permutations
@@ -312,9 +312,19 @@ print(b)
 # for i in list(s_keys):
 #     data = data+i+a[i]
 # print(data)
-
-
-
-
-
-
+import random
+# __RANDOM_TOKENS = "0123456789ABCDEF"
+#
+#
+# def random_str(length, radix=16) -> str:
+#     import random
+#     s = []
+#
+#     for i in range(0, length):
+#         s.append(__RANDOM_TOKENS[random.randrange(1, min(16, radix))])
+#
+#     return "".join(s)
+#
+# if __name__ == '__main__':
+#     cuid = random_str(32, radix=16).upper() + '|' + random_str(15, radix=10)
+#     print(cuid)
