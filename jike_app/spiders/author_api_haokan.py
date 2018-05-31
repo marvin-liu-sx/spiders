@@ -2,7 +2,6 @@
 import scrapy
 import json
 import time
-import uuid
 import random
 from ..items import MiaoPaiItem
 
@@ -49,7 +48,7 @@ class RandomHeader(object):
 
 
 class AhtuorApiHaokanSpider(scrapy.Spider):
-    name = 'ahtuor_api_haokan'
+    name = 'author_api_haokan'
     allowed_domains = ['sv.baidu.com']
 
     # start_urls = ['http://sv.baidu.com/']
