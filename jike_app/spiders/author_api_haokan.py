@@ -4,9 +4,10 @@ import json
 import time
 import random
 from ..items import MiaoPaiItem
+from urllib import parse
 
-appid_list = ['1558415107518709']
-TOPIC = '好看测试'
+appid_list = ['1549062383207647']
+TOPIC = '这个视频有毒'
 
 
 class App(object):
@@ -66,12 +67,12 @@ class AhtuorApiHaokanSpider(scrapy.Spider):
         if response.status == 200:
             print('请求成功')
             json_data = json.loads(response.body, encoding='utf-8')
-            print(json.dumps(json_data))
+            #print(json.dumps(json_data))
             _results = json_data['baijia/listall']['data']['results']
             if _results:
                 print('数据返回成功,个数为:%s个' % len(_results))
                 for i in _results:
-                    if i['type'] == 'video':
+                    if i['type'] and i['type'] == 'video':
                         _s = random.sample([random.randint(1, 100000000000)], 1)
                         _t = int(round(time.time() * 1000))
                         i_id = _s[0] + _t
@@ -124,7 +125,7 @@ class AhtuorApiHaokanSpider(scrapy.Spider):
                             video_url = '暂无'
 
                         if i['content']['cover_src']:
-                            video_cover = i['content']['cover_src']
+                            video_cover = parse.unquote(i['content']['cover_src'])
                         else:
                             video_cover = '暂无'
 
