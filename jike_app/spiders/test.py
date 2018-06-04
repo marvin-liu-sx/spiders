@@ -313,6 +313,7 @@ import time
 #     data = data+i+a[i]
 # print(data)
 import random
+
 # __RANDOM_TOKENS = "0123456789ABCDEF"
 #
 #
@@ -328,3 +329,8 @@ import random
 # if __name__ == '__main__':
 #     cuid = random_str(32, radix=16).upper() + '|' + random_str(15, radix=10)
 #     print(cuid)
+
+
+# a = {'name': 'zhangcong'}
+# b = a.update({'age': 18})
+# print(b)
