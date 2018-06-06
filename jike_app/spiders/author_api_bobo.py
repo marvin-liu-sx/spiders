@@ -43,7 +43,7 @@ class RandomHeaders(object):
             "accept": "*/*",
             "content-type": "application/x-www-form-urlencoded",
             "accept-encoding": "br, gzip, deflate",
-            "user-agent": "KG_Video/2.2.3 (iPhone; iOS 11.3.1; Scale/3.00)",
+            "user-agent": "Dalvik/2.1.0 (Linux; U; Android 7.0; Redmi Note 4X MIUI/V9.5.1.0.NCFCNFA)",
             "accept-language": "zh-Hans-CN;q=1",
             "Connection": "keep-alive"
         }
