@@ -94,8 +94,7 @@ class ApiBoboSpider(scrapy.Spider):
     allowed_domains = ['api.bbobo.com']
 
     # start_urls = ['http://api.bbobo.com/']
-    a = {"videoId": "2017070505525832"}
-    m_name = ''
+    a = {"videoId": "6408529292006787073"}
 
     def start_requests(self):
 

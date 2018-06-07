@@ -6,6 +6,9 @@ import random
 import uuid
 import re
 from ..items import MiaoPaiItem
+from tools.utils import MysqlDB
+from pydispatch import dispatcher
+from scrapy import signals
 
 TOPIC = '测试'
 
@@ -99,8 +102,15 @@ class AuthorApiBoboSpider(scrapy.Spider):
     a = {"page": "1", "userId": "6363581257657453569"}  # page为1时才会返回nickName
     m_name = ''
 
-    def start_requests(self):
+    def __init__(self):
+        super(AuthorApiBoboSpider, self).__init__()
+        self.db = MysqlDB()
+        dispatcher.connect(self.close_db, signals.spider_closed)
 
+    def close_db(self):
+        self.db.close()
+
+    def start_requests(self):
         yield scrapy.FormRequest(url='https://api.bbobo.com/v1/user/info.json',
                                  headers=RandomHeaders().get_postheader(),
                                  method='POST', dont_filter=True, formdata=FormData().get_form(dict(self.a)),
@@ -191,8 +201,8 @@ class AuthorApiBoboSpider(scrapy.Spider):
                         item['meta_data'] = json.dumps(json_data, ensure_ascii=False)
                         item['video_width'] = 640
                         item['video_height'] = 360
-                        # yield item
-                        print(item)
+                        yield item
+                        # print(item)
                 else:
                     pass
             else:

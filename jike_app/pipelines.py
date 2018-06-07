@@ -13,8 +13,8 @@ from twisted.enterprise import adbapi
 
 
 class JikeAppPipeline(object):
-    def process_item(self, item, spider):
-        connect = pymysql.Connect(
+    def __init__(self):
+        self.connect = pymysql.Connect(
             host='localhost',
             port=3306,
             user='root',
@@ -22,21 +22,23 @@ class JikeAppPipeline(object):
             db='jike_app',
             charset='utf8'
         )
-        cursor = connect.cursor()
+        self.cursor = self.connect.cursor()
+    def process_item(self, item, spider):
+
         sql = "INSERT INTO jike_recommendation (category, re_id, re_topic_id, re_content, re_subscribersCount, re_thumbnailUrl)" \
               " VALUES ('%s','%s','%s','%s','%s', '%s')"
         data = (
             item['category'], item['id'], item['topicId'], item['content'], item['subscribersCount'],
             item['thumbnailUrl'])
         try:
-            cursor.execute(sql % data)
+            self.cursor.execute(sql % data)
         except Exception as e:
-            connect.rollback()
+            self.connect.rollback()
             raise e
         finally:
-            connect.commit()
-            cursor.close()
-            connect.close()
+            self.connect.commit()
+            self.cursor.close()
+            self.connect.close()
         return item
 
 
@@ -158,7 +160,8 @@ class DouYinPipline(object):
               " VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
         data = (
             item['video_source'], item['video_id'], item['video_img'], item['video_url'], item['video_title'],
-            item['video_width'], item['video_height'], item['video_duration'], item['play_count'], item['comment_count'],
+            item['video_width'], item['video_height'], item['video_duration'], item['play_count'],
+            item['comment_count'],
             item['share_count'], item['digg_count'])
         try:
             cursor.execute(sql % data)
@@ -170,18 +173,11 @@ class DouYinPipline(object):
             cursor.close()
             connect.close()
         return item
-########################################################################################################################
+
+
+# **********************************************************************************************************************
 class MiaoPaiPipline(object):
     def process_item(self, item, spider):
-        connect = pymysql.Connect(
-            host='221.228.79.244',
-            port=8066,
-            user='zhangcong2@SpiderTest',
-            password='4k7wtlqqR',
-            db='spider_test',
-            charset='utf8mb4'
-        )
-        cursor = connect.cursor()
         sql = "INSERT INTO yunying (i_id, channel_id, topic, question_type, media_name, media_id, video_title, video_id, play_count," \
               " play_url, video_duration,video_url, video_cover, source, status, meta_data, video_width, video_height)" \
               "VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
@@ -190,13 +186,5 @@ class MiaoPaiPipline(object):
             item['media_id'], item['video_title'], item['video_id'], item['play_count'], item['play_url'],
             item['video_duration'], item['video_url'], item['video_cover'], item['source'], item['status'],
             item['meta_data'], item['video_width'], item['video_height'])
-        try:
-            cursor.execute(sql % data)
-            connect.commit()
-        except Exception as e:
-            connect.rollback()
-            raise e
-        finally:
-            cursor.close()
-            connect.close()
+        spider.db.insert(sql, data)
         return item
