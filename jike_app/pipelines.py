@@ -186,5 +186,5 @@ class MiaoPaiPipline(object):
             item['media_id'], item['video_title'], item['video_id'], item['play_count'], item['play_url'],
             item['video_duration'], item['video_url'], item['video_cover'], item['source'], item['status'],
             item['meta_data'], item['video_width'], item['video_height'])
-        spider.db.insert(sql, data)
+        spider.db.data_insert(sql, data)
         return item

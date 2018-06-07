@@ -122,3 +122,24 @@ class WeiboPageMiddleware(object):
             time.sleep(5)
             return HtmlResponse(url=self.browser.current_url, body=self.browser.page_source,
                                 encoding='utf-8', request=request)
+
+
+# 异常的response，记录request信息,调用process_response必须返回response，
+# 在process_request里直接返回response，就不再走process_response了
+# FormRequest中的FormData最终是加在request.body中的，可以根据request.body拿到
+# 可根据request.headers.get()方法拿到request的headers中的key-value值
+class CollectFailedRequestHeader(object):
+    def process_response(self, request, response, spider):
+        if spider.name == '':
+            if response.status != 200:
+                print('request非200')
+                print(request.body.decode())
+                with open('formdata.txt', 'a', encoding='utf-8') as b:
+                    b.write(request.body.decode()+'\n')
+            else:
+                pass
+                # print(request.headers.get('Cookie').decode())
+                # print(request.body.decode())
+        else:
+            pass
+        return response

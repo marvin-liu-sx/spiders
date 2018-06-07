@@ -106,9 +106,8 @@ class AuthorApiBoboSpider(scrapy.Spider):
         super(AuthorApiBoboSpider, self).__init__()
         self.db = MysqlDB()
         dispatcher.connect(self.close_db, signals.spider_closed)
-
     def close_db(self):
-        self.db.close()
+        self.db.db_close()
 
     def start_requests(self):
         yield scrapy.FormRequest(url='https://api.bbobo.com/v1/user/info.json',
@@ -121,7 +120,7 @@ class AuthorApiBoboSpider(scrapy.Spider):
             print('请求成功')
             json_data = json.loads(response.body, encoding='utf-8')
             if json_data['msg'] == 'ok':
-                print(json.dumps(json_data))
+                #print(json.dumps(json_data))
                 if self.page == 1:
                     if 'nickName' in json_data['data']['info']:
                         self.m_name = json_data['data']['info']['nickName']

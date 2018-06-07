@@ -31,7 +31,7 @@ class MysqlDB:
             print('dn-connect-failed')
         self.cursor = self.connect.cursor()
 
-    def close(self):
+    def db_close(self):
         if self.connect and self.cursor:
             self.cursor.close()
             self.connect.close()
@@ -41,7 +41,7 @@ class MysqlDB:
             #_l.info('db-close-failed')
             print('db-close-failed')
 
-    def insert(self, sql, data):
+    def data_insert(self, sql, data):
         if isinstance(sql, str):
             try:
                 self.cursor.execute(sql % data)
@@ -49,3 +49,5 @@ class MysqlDB:
             except Exception as e:
                 self.connect.rollback()
                 raise e
+        else:
+            print('params-wrong')
