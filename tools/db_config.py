@@ -6,10 +6,10 @@
 
 """Documentation comments"""
 db_config = {
-    'host': '221.228.79.244',
-    'port': 8066,
-    'user': 'zhangcong2@SpiderTest',
-    'password': '4k7wtlqqR',
-    'database': 'spider_test',
+    'host': 'localhost',
+    'port': 3306,
+    'user': 'root',
+    'password': 'qwer@6a',
+    'database': 'spider',
     'charset': 'utf8mb4',
 }

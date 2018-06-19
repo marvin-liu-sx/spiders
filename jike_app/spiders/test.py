@@ -336,15 +336,3 @@ import random
 # print(b)
 from scrapy.http import Request
 import time
-from tools.person_info_pb2 import Person
-a = Person()
-a.name = 'zhangcong'
-a.tel = '15210583831'
-b = a.SerializeToString()
-print(a.SerializeToString())
-print(type(a.SerializeToString()))
-print('shijiangeshi')
-import requests
-s = requests.Session()
-s.post(url='', data=b)
-s.close()

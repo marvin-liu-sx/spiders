@@ -178,8 +178,8 @@ class DouYinPipline(object):
 # **********************************************************************************************************************
 class MiaoPaiPipline(object):
     def process_item(self, item, spider):
-        sql = "INSERT INTO yunying (i_id, channel_id, topic, question_type, media_name, media_id, video_title, video_id, play_count," \
-              " play_url, video_duration,video_url, video_cover, source, status, meta_data, video_width, video_height)" \
+        sql = "INSERT INTO video_data_copy (i_id, channel_id, topic, question_type, media_name, media_id, video_title, video_id, play_count," \
+              " play_url, video_duration,share_url, video_cover, source, status, meta_data, video_width, video_height)" \
               "VALUES ('%s','%s','%s','%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
         data = (
             item['i_id'], item['channel_id'], item['topic'], item['question_type'], item['media_name'],
