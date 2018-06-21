@@ -334,5 +334,3 @@ import random
 # a = {'name': 'zhangcong'}
 # b = a.update({'age': 18})
 # print(b)
-from scrapy.http import Request
-import time
